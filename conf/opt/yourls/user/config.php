@@ -4,17 +4,17 @@
  */
 
 /** MySQL database username */
-define( 'YOURLS_DB_USER', 'yourls' );
+define( 'YOURLS_DB_USER', str_replace('"', '', getenv('YOURLS_DB_USER')) );
 
 /** MySQL database password */
-define( 'YOURLS_DB_PASS', 'mysecretpassword' );
+define( 'YOURLS_DB_PASS', str_replace('"', '', getenv('YOURLS_DB_PASS')) );
 
 /** The name of the database for YOURLS */
-define( 'YOURLS_DB_NAME', 'yourls' );
+define( 'YOURLS_DB_NAME', str_replace('"', '', getenv('YOURLS_DB_NAME')) );
 
 /** MySQL hostname.
  ** If using a non standard port, specify it like 'hostname:port', eg. 'localhost:9999' or '127.0.0.1:666' */
-define( 'YOURLS_DB_HOST', 'mysql' );
+define( 'YOURLS_DB_HOST', str_replace('"', '', getenv('YOURLS_DB_HOST')) );
 
 /** MySQL tables prefix */
 define( 'YOURLS_DB_PREFIX', 'yourls_' );
@@ -25,7 +25,7 @@ define( 'YOURLS_DB_PREFIX', 'yourls_' );
 
 /** YOURLS installation URL -- all lowercase and with no trailing slash.
  ** If you define it to "http://sho.rt", don't use "http://www.sho.rt" in your browser (and vice-versa) */
-define( 'YOURLS_SITE', 'http://localhost' );
+define( 'YOURLS_SITE', str_replace('"', '', getenv('YOURLS_SITE')) );
 
 /** Server timezone GMT offset */
 define( 'YOURLS_HOURS_OFFSET', 0 );
@@ -47,13 +47,13 @@ define( 'YOURLS_UNIQUE_URLS', true );
 define( 'YOURLS_PRIVATE', true );
 
 /** A random secret hash used to encrypt cookies. You don't have to remember it, make it long and complicated. Hint: copy from http://yourls.org/cookie **/
-define( 'YOURLS_COOKIEKEY', 'modify this text with something random' );
+define( 'YOURLS_COOKIEKEY', str_replace('"', '', getenv('YOURLS_COOKIEKEY')) );
 
 /** Username(s) and password(s) allowed to access the site. Passwords either in plain text or as encrypted hashes
  ** YOURLS will auto encrypt plain text passwords in this file
  ** Read http://yourls.org/userpassword for more information */
 $yourls_user_passwords = array(
-	'admin' => 'adminsecretpassword',
+	str_replace('"', '', getenv('YOURLS_ADMIN_USERNAME')) => str_replace('"', '', getenv('YOURLS_ADMIN_PASSWORD')),
 	// 'username2' => 'password2',
 	// You can have one or more 'login'=>'password' lines
 	);
