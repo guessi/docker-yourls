@@ -18,6 +18,13 @@ RUN apt-get update                                                         && \
     apt-get install --no-install-recommends -y git-core                    && \
     apt-get clean
 
+RUN git clone https://github.com/dgw/yourls-dont-track-admins.git             \
+    /opt/yourls/user/plugins/dont-track-admins                             && \
+    git clone https://github.com/timcrockford/302-instead.git                 \
+    /opt/yourls/user/plugins/302-instead                                   && \
+    git clone https://github.com/YOURLS/force-lowercase.git                   \
+    /opt/yourls/user/plugins/force-lowercase
+
 ADD conf/ /
 
 WORKDIR /opt/yourls
