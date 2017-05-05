@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql
+    container_name: yourls-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootsecretpassword
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=yourls
+    volumes:
+      - ./volumes/var/lib/mysql:/var/lib/mysql:rw
+    privileged: true
+
+  yourls:
+    build: ./
+    container_name: yourls
+    links:
+      - mysql:mysql
+    environment:
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=yourls
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql

@@ -1,0 +1,2 @@
+volumes/var/lib/mysql/*
+!volumes/var/lib/mysql/.PLACEHOLDER
