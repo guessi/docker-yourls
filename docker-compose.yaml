@@ -11,6 +11,11 @@ services:
       MYSQL_DATABASE: yourls
     volumes:
       - ./volumes/var/lib/mysql:/var/lib/mysql:rw
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "7"
     privileged: true
 
   yourls:
@@ -33,3 +38,8 @@ services:
       - 80:80
     depends_on:
       - mysql
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "7"
