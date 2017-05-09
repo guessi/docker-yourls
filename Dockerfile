@@ -23,7 +23,9 @@ RUN git clone https://github.com/dgw/yourls-dont-track-admins.git             \
     git clone https://github.com/timcrockford/302-instead.git                 \
     /opt/yourls/user/plugins/302-instead                                   && \
     git clone https://github.com/YOURLS/force-lowercase.git                   \
-    /opt/yourls/user/plugins/force-lowercase
+    /opt/yourls/user/plugins/force-lowercase                               && \
+    git clone https://github.com/guessi/yourls-mobile-detect.git              \
+    /opt/yourls/user/plugins/mobile-detect
 
 ADD conf/ /
 
