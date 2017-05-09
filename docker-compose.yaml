@@ -14,7 +14,9 @@ services:
     privileged: true
 
   yourls:
-    build: ./
+    # replace "image" with "build" for developing purpose
+    # build: ./
+    image: guessi/docker-yourls
     container_name: yourls
     links:
       - mysql:mysql
@@ -27,7 +29,6 @@ services:
       YOURLS_COOKIEKEY: 63d8cd986cded909158fcc00
       YOURLS_ADMIN_USERNAME: admin
       YOURLS_ADMIN_PASSWORD: my@dminP@ss
-
     ports:
       - 80:80
     depends_on:
