@@ -4,11 +4,8 @@ services:
   mysql:
     image: mysql
     container_name: yourls-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: rootsecretpassword
-      MYSQL_USER: yourls
-      MYSQL_PASSWORD: mysecretpassword
-      MYSQL_DATABASE: yourls
+    env_file:
+      - env.mysql
     volumes:
       - ./volumes/var/lib/mysql:/var/lib/mysql:rw
     logging:
@@ -25,15 +22,8 @@ services:
     container_name: yourls
     links:
       - mysql:mysql
-    environment:
-      YOURLS_DB_USER: yourls
-      YOURLS_DB_PASS: mysecretpassword
-      YOURLS_DB_NAME: yourls
-      YOURLS_DB_HOST: mysql
-      YOURLS_SITE: http://localhost
-      YOURLS_COOKIEKEY: 63d8cd986cded909158fcc00
-      YOURLS_ADMIN_USERNAME: admin
-      YOURLS_ADMIN_PASSWORD: my@dminP@ss
+    env_file:
+      - env.yourls
     ports:
       - 80:80
     depends_on:

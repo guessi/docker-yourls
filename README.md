@@ -21,28 +21,25 @@
 
 ## Usage
 
-To run YOURLS service with default config
-
-    $ docker-compose up --build
-
 To run YOURLS service with customized config
 
-    $ vim docker-compose.yaml
+    $ vim env.mysql
+    $ vim env.yourls
     $ docker-compose up --build
 
 
 ## Dashboard
 
-* Default Login Page: http://127.0.0.1/admin/index.php
-* Default Username: admin
-* Default Password: my@dminP@ss
+* Default Login Page: http://localhost/admin/index.php
+* Default Username: **see env.yourls**
+* Default Password: **see env.yourls**
 
 
 ## FAQ
 
 ### How can I use non-default password or variables?
 
-    simply modify the variable configures in `docker-compose.yaml` before run
+    simply modify the variable configures in `env.*` before run
 
 
 ## Known Issue
