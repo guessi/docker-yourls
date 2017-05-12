@@ -22,8 +22,8 @@ services:
       - mysql:mysql
     env_file:
       - env.yourls
-    ports:
-      - 80:80
+    expose:
+      - 80
     depends_on:
       - mysql
     logging:
@@ -31,3 +31,19 @@ services:
       options:
         max-size: 10m
         max-file: "7"
+
+  lb:
+    image: haproxy:alpine
+    links:
+      - yourls
+    ports:
+      - 80:80
+    volumes:
+        - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "7"
+    privileged: true
+    restart: always
