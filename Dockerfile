@@ -1,4 +1,4 @@
-FROM php:7-apache
+FROM php:7.1-apache
 
 ENV YOURLS_VERSION 1.7.2
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz

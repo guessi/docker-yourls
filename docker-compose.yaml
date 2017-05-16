@@ -2,7 +2,7 @@ version: '2'
 
 services:
   mysql:
-    image: mysql
+    image: mysql:5.7
     env_file:
       - env.mysql
     volumes:
@@ -17,7 +17,7 @@ services:
   yourls:
     # replace "image" with "build" for developing purpose
     # build: ./
-    image: guessi/docker-yourls
+    image: guessi/docker-yourls:1.7.2
     links:
       - mysql:mysql
     env_file:
