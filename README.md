@@ -25,7 +25,7 @@ To run YOURLS service with customized config
 
     $ vim env.mysql
     $ vim env.yourls
-    $ docker-compose up --build
+    $ docker-compose up [--build]
 
 
 ## Dashboard
@@ -45,7 +45,7 @@ To run YOURLS service with customized config
 ## Known Issue
 
 WebUI may show `Could not write file .htaccess in YOURLS root directory.`
-at first time deployment, it is actually a false alarm, please ignore it.
+at first time deployment, it is actually a **false alarm**, please ignore it.
 
 WebUI may show `Could not auto-encrypt passwords.` when log into admin page,
 it is Docker specific limitation, see [YOURLS wiki](https://github.com/YOURLS/YOURLS/wiki/Username-Passwords) for more detail
