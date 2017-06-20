@@ -1,2 +1,5 @@
+*.sql
 volumes/var/lib/mysql/*
 !volumes/var/lib/mysql/.PLACEHOLDER
+volumes/docker-entrypoint-initdb.d/*
+!volumes/docker-entrypoint-initdb.d/.PLACEHOLDER

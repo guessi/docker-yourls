@@ -35,6 +35,34 @@ To run YOURLS service with customized config
 * Default Password: **see env.yourls**
 
 
+## Advanced
+
+### Create database backup
+
+Execute `backup.sh` to get regular backup
+
+
+### Restore backup from backup file
+
+Make sure there is no container running
+
+    $ docker-compose down
+    $ docker ps
+
+Cleanup volumes/var/lib/mysql/*
+
+    $ rm -vrf volumes/var/lib/mysql/*
+
+Make sure there is no sql file under volums/docker-entrypoint-initdb.d/
+
+    $ ls -l volums/docker-entrypoint-initdb.d/
+
+Move the backup sql file to volumes/docker-entrypoint-initdb.d/
+
+    $ cp mysql-dump-YYYYMMDD-hhmmss.sql volums/docker-entrypoint-initdb.d/
+    $ docker-compose up [--build]
+
+
 ## FAQ
 
 ### How can I use non-default password or variables?
