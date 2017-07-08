@@ -55,7 +55,7 @@ Cleanup volumes/var/lib/mysql/*
 
 Make sure there is no sql file under volums/docker-entrypoint-initdb.d/
 
-    $ ls -l volums/docker-entrypoint-initdb.d/
+    $ ls -l volumes/docker-entrypoint-initdb.d/
 
 Move the backup sql file to volumes/docker-entrypoint-initdb.d/
 
