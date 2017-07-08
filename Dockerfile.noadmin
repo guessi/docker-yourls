@@ -20,8 +20,6 @@ RUN apt-get update                                                         && \
     apt-get install --no-install-recommends -y git-core                    && \
     apt-get clean
 
-WORKDIR /opt/yourls
-
 RUN git clone https://github.com/dgw/yourls-dont-track-admins.git             \
     /opt/yourls/user/plugins/dont-track-admins                             && \
     git clone https://github.com/timcrockford/302-instead.git                 \
@@ -30,5 +28,20 @@ RUN git clone https://github.com/dgw/yourls-dont-track-admins.git             \
     /opt/yourls/user/plugins/force-lowercase                               && \
     git clone https://github.com/guessi/yourls-mobile-detect.git              \
     /opt/yourls/user/plugins/mobile-detect
+
+WORKDIR /opt/yourls
+
+RUN rm -rf .git pages admin js css images sample* *.md                        \
+           user/languages                                                     \
+           user/config-sample.php                                             \
+           user/plugins/random-bg                                             \
+           user/plugins/sample*                                               \
+           yourls-api.php                                                     \
+           yourls-infos.php                                                && \
+    sed -i '/base64/d' yourls-loader.php                                   && \
+    (find . -type d -name ".git" -exec rm -rf {} +)                        && \
+    (find . -type f -name "*.html" ! -name "index.html" -delete)           && \
+    (find . -type f -name "*.json" -o -name "*.md" -o -name "*.css" | xargs rm -f) && \
+    (find . -type f -exec file {} + | awk -F: '{if ($2 ~/image/) print $1}' | xargs rm -f)
 
 ADD conf/ /
