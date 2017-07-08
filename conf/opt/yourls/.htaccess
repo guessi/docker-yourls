@@ -11,35 +11,15 @@
   Options -Indexes
 </IfModule>
 
-<files config.php>
+<files config*.php>
   order allow,deny
   deny from all
 </files>
 
-<files config-sample.php>
+<filesmatch "\.(htaccess|htpasswd|ini|psd|log|sh|bat|json|md|html|dat|txt)$">
   order allow,deny
   deny from all
-</files>
-
-<files *.md>
-  order allow,deny
-  deny from all
-</files>
-
-<files sample*>
-  order allow,deny
-  deny from all
-</files>
-
-<files composer.json>
-  order allow,deny
-  deny from all
-</files>
-
-<files *.html>
-  order allow,deny
-  deny from all
-</files>
+</filesmatch>
 
 <files readme.html>
   order deny,allow
