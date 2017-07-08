@@ -1,2 +1,6 @@
 docker-compose.yaml
 volumes
+*.md
+*.sh
+.env
+env.*
