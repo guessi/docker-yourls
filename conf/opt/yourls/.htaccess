@@ -16,7 +16,7 @@
   deny from all
 </files>
 
-<filesmatch "\.(htaccess|htpasswd|ini|psd|log|sh|bat|json|md|html|dat|txt|inc|pem)$">
+<filesmatch "\.(htaccess|htpasswd|ini|psd|log|sh|bat|json|md|html|dat|txt|inc|pem|git)$">
   order allow,deny
   deny from all
 </filesmatch>
