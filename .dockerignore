@@ -4,3 +4,5 @@ volumes
 *.sh
 .env
 env.*
+.git
+.git*
