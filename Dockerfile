@@ -16,19 +16,20 @@ RUN sed -i -e '/ServerTokens/s/^.*$/ServerTokens Prod/g'                      \
 
 RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
 
-RUN apt-get update                                                         && \
-    apt-get install --no-install-recommends -y git-core                    && \
-    apt-get clean
-
 WORKDIR /opt/yourls
 
-RUN git clone https://github.com/dgw/yourls-dont-track-admins.git             \
-    /opt/yourls/user/plugins/dont-track-admins                             && \
-    git clone https://github.com/timcrockford/302-instead.git                 \
-    /opt/yourls/user/plugins/302-instead                                   && \
-    git clone https://github.com/YOURLS/force-lowercase.git                   \
-    /opt/yourls/user/plugins/force-lowercase                               && \
-    git clone https://github.com/guessi/yourls-mobile-detect.git              \
-    /opt/yourls/user/plugins/mobile-detect
-
 ADD conf/ /
+
+ADD https://github.com/dgw/yourls-dont-track-admins/archive/master.tar.gz     \
+    /opt/dont-track-admins.tar.gz
+ADD https://github.com/timcrockford/302-instead/archive/master.tar.gz         \
+    /opt/302-instead.tar.gz
+ADD https://github.com/YOURLS/force-lowercase/archive/master.tar.gz           \
+    /opt/force-lowercase.tar.gz
+ADD https://github.com/guessi/yourls-mobile-detect/archive/master.tar.gz      \
+    /opt/mobile-detect.tar.gz
+
+RUN for i in dont-track-admins 302-instead force-lowercase mobile-detect; do  \
+      mkdir -p user/plugins/${i}                                            ; \
+      tar zxvf /opt/${i}.tar.gz --strip-components=1 -C user/plugins/${i}   ; \
+    done
