@@ -34,6 +34,7 @@ RUN for i in dont-track-admins 302-instead force-lowercase mobile-detect; do  \
       tar zxvf /opt/${i}.tar.gz --strip-components=1 -C user/plugins/${i}   ; \
     done
 
+# security enhancement: leave only production required items
 RUN rm -rf .git pages admin js css images sample* *.md                        \
            user/languages                                                     \
            user/config-sample.php                                             \

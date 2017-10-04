@@ -34,6 +34,7 @@ RUN for i in dont-track-admins 302-instead force-lowercase mobile-detect; do  \
       tar zxvf /opt/${i}.tar.gz --strip-components=1 -C user/plugins/${i}   ; \
     done
 
+# security enhancement: remove sample configs
 RUN rm -rf user/config-sample.php                                             \
            user/plugins/sample*                                            && \
     (find . -type d -name ".git" -exec rm -rf {} +)
