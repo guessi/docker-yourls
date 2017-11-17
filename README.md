@@ -59,7 +59,7 @@ Make sure there is no sql file under volums/docker-entrypoint-initdb.d/
 
 Move the backup sql file to volumes/docker-entrypoint-initdb.d/
 
-    $ cp mysql-dump-YYYYMMDD-hhmmss.sql volums/docker-entrypoint-initdb.d/
+    $ cp mysql-dump-YYYYMMDD-hhmmss.sql volumes/docker-entrypoint-initdb.d/
     $ docker-compose up [--build]
 
 
