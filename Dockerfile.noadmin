@@ -43,16 +43,18 @@ RUN for i in $(ls /opt/*.tar.gz); do                                          \
         -C user/plugins/${plugin_name}                                      ; \
     done
 
+# security enhancement: remove sample configs
+RUN rm -rf user/config-sample.php                                             \
+           user/plugins/sample*                                            && \
+    (find . -type d -name ".git" -exec rm -rf {} +)
+
 # security enhancement: leave only production required items
 RUN rm -rf .git pages admin js css images sample* *.md                        \
            user/languages                                                     \
-           user/config-sample.php                                             \
            user/plugins/random-bg                                             \
-           user/plugins/sample*                                               \
            yourls-api.php                                                     \
            yourls-infos.php                                                && \
     sed -i '/base64/d' yourls-loader.php                                   && \
-    (find . -type d -name ".git" -exec rm -rf {} +)                        && \
     (find . -type f -name "*.html" ! -name "index.html" -delete)           && \
     (find . -type f -name "*.json" -o -name "*.md" -o -name "*.css" | xargs rm -f) && \
     (find . -type f -exec file {} + | awk -F: '{if ($2 ~/image/) print $1}' | xargs rm -f)
