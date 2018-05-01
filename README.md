@@ -12,11 +12,14 @@
 
 ## Integrated Plugins
 
-* [302-instead](https://github.com/timcrockford/302-instead.git)
-* [dont-track-admins](https://github.com/dgw/yourls-dont-track-admins.git)
+* [302-instead](https://github.com/timcrockford/302-instead)
+* [dont-track-admins](https://github.com/dgw/yourls-dont-track-admins)
 * [fallback_url_config](http://diegopeinador.com/fallback-url-yourls-plugin)
-* [force-lowercase](https://github.com/YOURLS/force-lowercase.git)
-* [mobile-detect](https://github.com/guessi/yourls-mobile-detect.git)
+* [force-lowercase](https://github.com/YOURLS/force-lowercase)
+* [mobile-detect](https://github.com/guessi/yourls-mobile-detect)
+* [dont-log-bots](https://github.com/YOURLS/dont-log-bots)
+* [dont-log-crawler](https://github.com/luixxiul/dont-log-crawlers)
+* [dont-log-health-checker](https://github.com/guessi/yourls-dont-log-health-checker)
 
 
 ## Usage
