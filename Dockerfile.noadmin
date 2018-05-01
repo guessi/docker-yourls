@@ -28,10 +28,19 @@ ADD https://github.com/YOURLS/force-lowercase/archive/master.tar.gz           \
     /opt/force-lowercase.tar.gz
 ADD https://github.com/guessi/yourls-mobile-detect/archive/master.tar.gz      \
     /opt/mobile-detect.tar.gz
+ADD https://github.com/YOURLS/dont-log-bots/archive/master.tar.gz             \
+    /opt/dont-log-bots.tar.gz
+ADD https://github.com/luixxiul/dont-log-crawlers/archive/master.tar.gz       \
+    /opt/dont-log-crawlers.tar.gz
+ADD https://github.com/guessi/yourls-dont-log-health-checker/archive/master.tar.gz \
+    /opt/dont-log-health-checker.tar.gz
 
-RUN for i in dont-track-admins 302-instead force-lowercase mobile-detect; do  \
-      mkdir -p user/plugins/${i}                                            ; \
-      tar zxvf /opt/${i}.tar.gz --strip-components=1 -C user/plugins/${i}   ; \
+RUN for i in $(ls /opt/*.tar.gz); do                                          \
+      plugin_name="$(basename ${i} '.tar.gz')"                              ; \
+      mkdir -p user/plugins/${plugin_name}                                  ; \
+      tar zxvf /opt/${plugin_name}.tar.gz                                     \
+        --strip-components=1                                                  \
+        -C user/plugins/${plugin_name}                                      ; \
     done
 
 # security enhancement: leave only production required items
