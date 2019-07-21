@@ -20,8 +20,8 @@ services:
     # build: ./
     #
     # replae "x.y.z" with "x.y.z-noadmin" for production environment
-    # image: guessi/docker-yourls:1.7.2-noadmin
-    image: guessi/docker-yourls:1.7.2
+    # image: guessi/docker-yourls:1.7.3-noadmin
+    image: guessi/docker-yourls:1.7.3
     links:
       - mysql:mysql
     env_file:
