@@ -1,6 +1,6 @@
 FROM php:7.2-apache-stretch
 
-ENV YOURLS_VERSION 1.7.3
+ENV YOURLS_VERSION 1.7.4
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz
 
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
