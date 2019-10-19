@@ -1,4 +1,4 @@
-FROM php:7.2-apache-stretch
+FROM php:7.3-apache-stretch
 
 ENV YOURLS_VERSION 1.7.4
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz
