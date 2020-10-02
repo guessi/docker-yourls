@@ -3,9 +3,9 @@ FROM php:7.3-apache-stretch
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
     a2enmod rewrite ssl
 
-ENV YOURLS_VERSION 1.7.6
+ENV YOURLS_VERSION 1.7.9
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz
-ENV YOURLS_CHECKSUM f3623af6e4cabee61a39d3deca3c941717c5e0a60bc288b6f3a668f87a20ae2e
+ENV YOURLS_CHECKSUM 0d9106b2936289d2fe5d4d6c017a77f96c79f4b2cacf1b59a0837d0032ca96d7
 
 RUN mkdir -p /opt/yourls                                                   && \
     curl -sSL ${YOURLS_PACKAGE} -o /tmp/yourls.tar.gz                      && \
