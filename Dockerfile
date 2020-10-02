@@ -13,8 +13,8 @@ RUN mkdir -p /opt/yourls                                                   && \
     tar xf /tmp/yourls.tar.gz --strip-components=1 --directory=/opt/yourls && \
     rm -rf /tmp/yourls.tar.gz
 
-RUN sed -i -e '/ServerTokens/s/^.*$/ServerTokens Prod/g'                      \
-           -e '/ServerSignature/s/^.*$/ServerSignature Off/g'                 \
+RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
+           -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
         /etc/apache2/conf-available/security.conf
 
 RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
