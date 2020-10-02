@@ -11,17 +11,18 @@
   Options -Indexes
 </IfModule>
 
-<files config*.php>
-  order allow,deny
-  deny from all
-</files>
+<Files config*.php>
+  Require all denied
+</Files>
 
-<filesmatch "\.(htaccess|htpasswd|ini|psd|log|sh|bat|json|md|html|dat|txt|inc|pem|git)$">
-  order allow,deny
-  deny from all
-</filesmatch>
+<FilesMatch "\.(htaccess|htpasswd|ini|psd|log|sh|bat|json|lock|md|html|dat|txt|inc|pem|key|swp|svn|git|gitignore)$">
+  Require all denied
+</FilesMatch>
 
-<files readme.html>
-  order deny,allow
-  allow from all
-</files>
+<FilesMatch "composer\.(json|lock)$">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "(LICENSE|COPYING|CHANGELOG)">
+  Require all denied
+</FilesMatch>
