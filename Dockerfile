@@ -1,4 +1,12 @@
-FROM php:7.3-apache-stretch
+FROM php:7.4-apache-buster
+
+RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
+           -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
+        /etc/apache2/conf-available/security.conf
+
+RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
+
+RUN apt update && apt install -y --no-install-recommends libonig-dev
 
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
     a2enmod rewrite ssl
@@ -13,15 +21,7 @@ RUN mkdir -p /opt/yourls                                                   && \
     tar xf /tmp/yourls.tar.gz --strip-components=1 --directory=/opt/yourls && \
     rm -rf /tmp/yourls.tar.gz
 
-RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
-           -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
-        /etc/apache2/conf-available/security.conf
-
-RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
-
 WORKDIR /opt/yourls
-
-ADD conf/ /
 
 ADD https://github.com/dgw/yourls-dont-track-admins/archive/master.tar.gz     \
     /opt/dont-track-admins.tar.gz
@@ -45,6 +45,8 @@ RUN for i in $(ls /opt/*.tar.gz); do                                          \
         --strip-components=1                                                  \
         -C user/plugins/${plugin_name}                                      ; \
     done
+
+ADD conf/ /
 
 # security enhancement: remove sample configs
 RUN rm -rf user/config-sample.php                                             \
