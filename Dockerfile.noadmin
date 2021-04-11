@@ -23,6 +23,8 @@ RUN mkdir -p /opt/yourls                                                   && \
 
 WORKDIR /opt/yourls
 
+ADD https://github.com/YOURLS/timezones/archive/master.tar.gz                 \
+    /opt/timezones.tar.gz
 ADD https://github.com/dgw/yourls-dont-track-admins/archive/master.tar.gz     \
     /opt/dont-track-admins.tar.gz
 ADD https://github.com/timcrockford/302-instead/archive/master.tar.gz         \

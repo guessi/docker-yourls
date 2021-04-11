@@ -12,6 +12,7 @@
 
 ## Integrated Plugins
 
+* [timezones](https://github.com/YOURLS/timezones)
 * [302-instead](https://github.com/timcrockford/302-instead)
 * [dont-track-admins](https://github.com/dgw/yourls-dont-track-admins)
 * [fallback_url_config](http://diegopeinador.com/fallback-url-yourls-plugin)
