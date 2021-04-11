@@ -52,18 +52,18 @@ Make sure there is no container running
     $ docker-compose down
     $ docker ps
 
-Cleanup volumes/var/lib/mysql/*
+Cleanup "mysql-data" volume
 
-    $ rm -vrf volumes/var/lib/mysql/*
+    $ docker volume rm yourls_mysql-data
 
-Make sure there is no sql file under volums/docker-entrypoint-initdb.d/
+Make sure there is no sql file under "mysql-initdb" volume
 
-    $ ls -l volumes/docker-entrypoint-initdb.d/
+    $ rm -vf ./volumes/docker-entrypoint-initdb.d/*
 
-Move the backup sql file to volumes/docker-entrypoint-initdb.d/
+Move the backup sql file to "mysql-initdb" volume
 
-    $ cp mysql-dump-YYYYMMDD-hhmmss.sql volumes/docker-entrypoint-initdb.d/
-    $ docker-compose up [--build]
+    $ cp -vf ./mysql-dump-YYYYMMDD-hhmmss.sql ./volumes/docker-entrypoint-initdb.d/
+    $ docker-compose up -d
 
 
 ## FAQ

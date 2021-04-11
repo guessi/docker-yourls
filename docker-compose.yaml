@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   mysql:
@@ -6,14 +6,19 @@ services:
     env_file:
       - env.mysql
     volumes:
-      - ./volumes/var/lib/mysql:/var/lib/mysql:rw
-      - ./volumes/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:ro
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+        read_only: false
+      - type: bind
+        source: ./volumes/docker-entrypoint-initdb.d
+        target: /docker-entrypoint-initdb.d
+        read_only: true
     logging:
       driver: json-file
       options:
         max-size: 20m
         max-file: "30"
-    privileged: true
 
   yourls:
     # replace "image" with "build" for developing purpose
@@ -35,3 +40,6 @@ services:
       options:
         max-size: 20m
         max-file: "30"
+
+volumes:
+  mysql-data:
