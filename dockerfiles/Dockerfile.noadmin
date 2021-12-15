@@ -1,4 +1,4 @@
-FROM guessi/docker-yourls:1.8.1
+FROM guessi/docker-yourls:1.8.2
 
 # security enhancement: leave only production required items
 RUN rm -rf .git pages admin js css images sample* *.md                        \
