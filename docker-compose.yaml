@@ -22,9 +22,12 @@ services:
 
   yourls:
     # replace "image" with "build" for developing purpose
-    # build: ./
+    # build: ./dockerfiles
     #
-    # replae "x.y.z" with "x.y.z-noadmin" for production environment
+    # or even more integrated with theme Sleeky
+    # image: guessi/docker-yourls:1.8.1-theme
+    #
+    # or with "x.y.z-noadmin" for production environment
     # image: guessi/docker-yourls:1.8.1-noadmin
     image: guessi/docker-yourls:1.8.1
     links:
