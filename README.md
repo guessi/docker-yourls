@@ -29,7 +29,7 @@ To run YOURLS service with customized config
 
     $ vim env.mysql
     $ vim env.yourls
-    $ docker-compose up [--build]
+    $ docker-compose up [--build] [-d]
 
 
 ## Dashboard
@@ -71,8 +71,13 @@ Move the backup sql file to "mysql-initdb" volume
 
 ### How can I use non-default password or variables?
 
-    simply modify the variable configures in `env.*` before run
+    simply modify the variables inside `env.*` before your first run.
 
+### Limitations for environment files
+
+    * The value of `YOURLS_DB_PASS` inside `env.yourls` **SHOULD BE** exactly the same as `MYSQL_PASSWORD` in `env.mysql`.
+    * The value of `YOURLS_DB_USER` inside `env.yourls` **SHOULD BE**  exactly the same as `MYSQL_USER` in `env.mysql.
+    * All variables inside `env.mysql` and `env.yourls` **SHOULD NOT** contain `'=' (equal sign)`, `' ' (space)`, `'#' (number sign)`.
 
 ## Known Issue
 
