@@ -6,3 +6,4 @@ volumes
 env.*
 .git
 .git*
+.DS_Store
