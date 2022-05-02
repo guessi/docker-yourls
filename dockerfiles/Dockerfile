@@ -54,3 +54,9 @@ ADD conf/ /
 RUN rm -rf user/config-sample.php                                             \
            user/plugins/sample*                                            && \
     (find . -type d -name ".git" -exec rm -rf {} +)
+
+# patch for dont-log-crawlers
+# - https://github.com/guessi/docker-yourls/issues/6
+# - https://github.com/luixxiul/dont-log-crawlers/issues/13
+# - https://github.com/luixxiul/dont-log-crawlers/blob/master/plugin.php#L283-L297
+RUN sed -i -e '/Blacklisted CIDRs from the DB/s/null/array()/' user/plugins/dont-log-crawlers/plugin.php
