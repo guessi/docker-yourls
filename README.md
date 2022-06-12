@@ -7,7 +7,7 @@
 
 ## Integrated Items
 
-* [Yourls](http://yourls.org) - 1.9.0
+* [Yourls](http://yourls.org) - 1.9.1
 
 
 ## Integrated Plugins

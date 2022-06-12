@@ -1,4 +1,4 @@
-FROM guessi/docker-yourls:1.9.0
+FROM guessi/docker-yourls:1.9.1
 
 WORKDIR /opt/yourls
 
