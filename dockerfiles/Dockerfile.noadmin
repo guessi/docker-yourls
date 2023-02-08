@@ -1,6 +1,7 @@
 FROM guessi/docker-yourls:1.9.1
 
 # security enhancement: leave only production required items
+# ** note that it will still available somewhere in docker image layers
 RUN rm -rf .git pages admin js css images sample* *.md                        \
            user/languages                                                     \
            user/plugins/random-bg                                             \
