@@ -11,9 +11,9 @@ RUN apt update && apt install -y --no-install-recommends libonig-dev
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
     a2enmod rewrite ssl
 
-ENV YOURLS_VERSION 1.9
+ENV YOURLS_VERSION 1.9.1
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz
-ENV YOURLS_CHECKSUM 212c4cd283f0b2b44e07da66a882cca4886e064f642bf4de8ecb8dbfb867e542
+ENV YOURLS_CHECKSUM 0bf53290e8f86ea2e0121aac70f7c64d70d3dfb54823acb9dcc343dd7c5f455a
 
 RUN mkdir -p /opt/yourls                                                   && \
     curl -sSL ${YOURLS_PACKAGE} -o /tmp/yourls.tar.gz                      && \
