@@ -1,9 +1,11 @@
 #!/bin/sh
 
-docker push guessi/docker-yourls:1.9.1
-docker push guessi/docker-yourls:1.9.1-theme
-docker push guessi/docker-yourls:1.9.1-noadmin
+VERSION=1.9.2
 
-docker tag guessi/docker-yourls:1.9.1 guessi/docker-yourls:latest
+docker push guessi/docker-yourls:${VERSION}
+docker push guessi/docker-yourls:${VERSION}-theme
+docker push guessi/docker-yourls:${VERSION}-noadmin
+
+docker tag guessi/docker-yourls:${VERSION} guessi/docker-yourls:latest
 
 docker push guessi/docker-yourls

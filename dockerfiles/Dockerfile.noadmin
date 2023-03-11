@@ -1,4 +1,4 @@
-FROM guessi/docker-yourls:1.9.1
+FROM guessi/docker-yourls:1.9.2
 
 # security enhancement: leave only production required items
 # ** note that it will still available somewhere in docker image layers
