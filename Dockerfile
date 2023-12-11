@@ -11,7 +11,7 @@
 # Container image source:
 # - https://hub.docker.com/_/php/tags?page=1&name=8.3-apache-bookworm
 
-FROM php:8.3-apache-bookworm
+FROM php:8.3-apache-bookworm as yourls
 
 RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
@@ -73,3 +73,36 @@ RUN rm -rf user/config-sample.php                                             \
 # - https://github.com/luixxiul/dont-log-crawlers/issues/13
 # - https://github.com/luixxiul/dont-log-crawlers/blob/master/plugin.php#L283-L297
 RUN sed -i -e '/Blacklisted CIDRs from the DB/s/null/array()/' user/plugins/dont-log-crawlers/plugin.php
+
+FROM yourls as noadmin
+
+# security enhancement: leave only production required items
+# ** note that it will still available somewhere in docker image layers
+RUN rm -rf .git pages admin js css images sample* *.md                        \
+           user/languages                                                     \
+           user/plugins/random-bg                                             \
+           yourls-api.php                                                     \
+           yourls-infos.php                                                && \
+    sed -i '/base64/d' yourls-loader.php                                   && \
+    (find . -type f -name "*.html" ! -name "index.html" -delete)           && \
+    (find . -type f -name "*.json" -o -name "*.md" -o -name "*.css" | xargs rm -f) && \
+    (find . -type f -exec file {} + | awk -F: '{if ($2 ~/image/) print $1}' | xargs rm -f)
+
+FROM yourls as theme
+
+WORKDIR /opt/yourls
+
+# sample configuration to integrate theme Sleeky-v2.5.0
+# - ref: https://github.com/Flynntes/Sleeky#quick-start
+ADD https://github.com/Flynntes/Sleeky/archive/refs/tags/v2.5.0.tar.gz        \
+      /opt/theme-sleeky.tar.gz
+
+RUN mkdir -p /tmp/sleeky-extracted                                         && \
+    tar zxvf /opt/theme-sleeky.tar.gz                                         \
+        --strip-components=1                                                  \
+        -C /tmp/sleeky-extracted                                           && \
+    mv -vf /tmp/sleeky-extracted/sleeky-backend user/plugins/theme-sleeky  && \
+    mv -vf /tmp/sleeky-extracted/sleeky-frontend .                         && \
+    rm -rvf /tmp/sleeky-extracted
+
+# NOTE: you will need to activate the theme manually

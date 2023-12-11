@@ -22,7 +22,7 @@ services:
 
   yourls:
     # replace "image" with "build" for developing purpose
-    # build: ./dockerfiles
+    # build: ./Dockerfile
     #
     # or even more integrated with theme Sleeky
     # image: guessi/docker-yourls:1.9.2-theme
