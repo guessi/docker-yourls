@@ -4,7 +4,7 @@ BACKUP_FILE="mysql-dump-$(date +%Y-%m-%d-%H%m%S).sql"
 
 docker info >/dev/null
 
-docker-compose exec mysql   \
+docker compose exec mysql   \
   sh -c '                   \
     exec /usr/bin/mysqldump \
       -h localhost          \

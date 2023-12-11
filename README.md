@@ -47,7 +47,7 @@ To run YOURLS service with customized config
 
     $ vim env.mysql
     $ vim env.yourls
-    $ docker-compose up [--build] [-d]
+    $ docker compose up [--build] [-d]
 
 
 ## Dashboard
@@ -68,7 +68,7 @@ Execute `backup.sh` to get regular backup
 
 Make sure there is no container running
 
-    $ docker-compose down
+    $ docker compose down
     $ docker ps
 
 Cleanup "mysql-data" volume
@@ -82,7 +82,7 @@ Make sure there is no sql file under "mysql-initdb" volume
 Move the backup sql file to "mysql-initdb" volume
 
     $ cp -vf ./mysql-dump-YYYYMMDD-hhmmss.sql ./volumes/docker-entrypoint-initdb.d/
-    $ docker-compose up -d
+    $ docker compose up -d
 
 
 ## FAQ
