@@ -1,4 +1,17 @@
-FROM php:8.0-apache-buster
+# PHP versions support:
+# +--------+ -----------------+----------------------+------------------------+
+# | Branch | Initial Releasae | Active Support Until | Security Support Until |
+# +--------+ -----------------+----------------------+------------------------+
+# | 8.1    | Nov 25, 2021     | Nov 25, 2023         | Nov 25, 2024           |
+# | 8.2    | Dec  8, 2022     | Dec  8, 2024         | Dec  8, 2025           |
+# | 8.3    | Nov 23, 2023     | Nov 23, 2025         | Nov 23, 2026           |
+# +--------+ -----------------+----------------------+------------------------+
+# - https://www.php.net/supported-versions.php
+#
+# Container image source:
+# - https://hub.docker.com/_/php/tags?page=1&name=8.3-apache-bookworm
+
+FROM php:8.3-apache-bookworm
 
 RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
