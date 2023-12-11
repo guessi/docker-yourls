@@ -52,7 +52,7 @@ To run YOURLS service with customized config
 
 ## Dashboard
 
-* Default Login Page: http://localhost/admin/index.php
+* Default Login Page: http://localhost/admin/
 * Default Username: **see env.yourls**
 * Default Password: **see env.yourls**
 
