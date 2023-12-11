@@ -19,7 +19,9 @@ RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
 
 RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
 
-RUN apt update && apt install -y --no-install-recommends libonig-dev
+RUN apt update                                                             && \
+    apt install -y --no-install-recommends libonig-dev                     && \
+    apt install -y tzdata
 
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
     a2enmod rewrite ssl
