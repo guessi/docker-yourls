@@ -44,7 +44,7 @@ ADD https://github.com/timcrockford/302-instead/archive/master.tar.gz         \
     /opt/302-instead.tar.gz
 ADD https://github.com/YOURLS/force-lowercase/archive/master.tar.gz           \
     /opt/force-lowercase.tar.gz
-ADD https://github.com/guessi/yourls-mobile-detect/archive/refs/tags/1.0.8.tar.gz \
+ADD https://github.com/guessi/yourls-mobile-detect/archive/refs/tags/3.0.0.tar.gz \
     /opt/mobile-detect.tar.gz
 ADD https://github.com/YOURLS/dont-log-bots/archive/master.tar.gz             \
     /opt/dont-log-bots.tar.gz
