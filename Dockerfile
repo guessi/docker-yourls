@@ -7,6 +7,7 @@
 # | 8.3    | Nov 23, 2023     | Nov 23, 2025         | Nov 23, 2026           |
 # +--------+ -----------------+----------------------+------------------------+
 # - https://www.php.net/supported-versions.php
+# - https://php.watch/versions
 #
 # Container image source:
 # - https://hub.docker.com/_/php/tags?page=1&name=8.3-apache-bookworm
