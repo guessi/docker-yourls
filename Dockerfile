@@ -114,3 +114,8 @@ RUN mkdir -p /tmp/sleeky-extracted                                         && \
     rm -rvf /tmp/sleeky-extracted
 
 # NOTE: you will need to activate the theme manually
+
+# Uncomment the line below to include your own "config.php" setup
+# ADD path-to-your-config/config.php /opt/yourls/user/config.php
+#
+# ref: https://github.com/YOURLS/YOURLS/blob/1.9.2/user/config-sample.php
