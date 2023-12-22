@@ -93,6 +93,11 @@ RUN rm -rf .git pages admin js css images sample* *.md                        \
 
 FROM yourls as theme
 
+# please be awared that "Flynntes/Sleeky" here have no update for years
+# you should take your own risk if you choose to have theme included
+# - https://github.com/Flynntes/Sleeky/releases
+# - https://github.com/Flynntes/Sleeky/issues
+
 WORKDIR /opt/yourls
 
 # sample configuration to integrate theme Sleeky-v2.5.0
