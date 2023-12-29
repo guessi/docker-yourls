@@ -49,6 +49,36 @@ To run YOURLS service with customized config
     $ vim env.yourls
     $ docker compose up [--build] [-d]
 
+## Docker run
+You can also use docker CLI instead of compose
+```sh
+docker run -d \
+  --name yourls-mysql \
+  --restart always \
+  -p 3306:3306 \
+  -e TZ=Europe/Bucharest \
+  -e MYSQL_DATABASE=yourls \
+  -e MYSQL_USER=yourls \
+  -e MYSQL_PASSWORD=yourls \
+  -e MYSQL_ROOT_PASSWORD=yourls-mysql \
+  -v /home/$USER/.yourls/mysql:/var/lib/mysql \
+  mysql:5.7
+
+docker run -d \
+  --name yourls \
+  --restart unless-stopped \
+  -p 80:80 \
+  -e TZ=Europe/Bucharest \
+  -e YOURLS_SITE="https://example.com" \
+  -e YOURLS_DB_HOST=IP:3306 \ # mysql host:port
+  -e YOURLS_DB_NAME=yourls \ # mysql MYSQL_DATABASE
+  -e YOURLS_DB_USER=yourls \ # mysql MYSQL_USER
+  -e YOURLS_DB_PASS=yourls \ # mysql MYSQL_PASSWORD
+  (... the rest of your env vars ...)
+  -v /home/$USER/.yourls/user:/opt/yourls/user \
+  -v /home/$USER/.yourls/index.php:/opt/yourls/index.php \
+  ghcr.io/rursache/yourls-docker-image:master
+```
 
 ## Dashboard
 
@@ -58,6 +88,15 @@ To run YOURLS service with customized config
 
 
 ## Advanced
+
+### Getting access to the plugins/pages/config.php after the initial install
+
+You can map `/opt/yourls/user` to a volume for easy plugin installation or to create custom pages.
+
+> [!NOTE]
+> Please do so only after the initial install and after you extracted the contents of `/opt/yourls/user` to your prefered path
+
+For a simple public homepage, map `/opt/yourls/index.php` to your own. Simply using the `sample-public-front-page.txt` (from the official YOURLS release) renamed to `index.php` will get you started
 
 ### Create database backup
 
