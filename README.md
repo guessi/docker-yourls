@@ -4,7 +4,6 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/guessi/docker-yourls.svg)](https://hub.docker.com/r/guessi/docker-yourls/)
 [![Docker Automated](https://img.shields.io/docker/automated/guessi/docker-yourls.svg)](https://hub.docker.com/r/guessi/docker-yourls/)
 
-
 ## Before start, things you need to know...
 
 ### Difference between Official Build and why this project exist?
@@ -42,6 +41,9 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 
 
 ## Usage
+
+> [!IMPORTANT]
+> You should always change the default username/password pairs for both MySQL and YOURLS.
 
 To run YOURLS service with customized config
 
@@ -87,20 +89,33 @@ Move the backup sql file to "mysql-initdb" volume
 
 ## FAQ
 
+### Why there would have no homepage for YOURLS?
+
+    Check the answer at the link below
+    - https://github.com/orgs/YOURLS/discussions/3638#discussioncomment-7192119
+
 ### How can I use non-default password or variables?
 
     simply modify the variables inside `env.*` before your first run.
 
 ### Limitations for environment files
 
-    * The value of `YOURLS_DB_PASS` inside `env.yourls` **SHOULD BE** exactly the same as `MYSQL_PASSWORD` in `env.mysql`.
-    * The value of `YOURLS_DB_USER` inside `env.yourls` **SHOULD BE**  exactly the same as `MYSQL_USER` in `env.mysql.
-    * All variables inside `env.mysql` and `env.yourls` **SHOULD NOT** contain `'=' (equal sign)`, `' ' (space)`, `'#' (number sign)`.
+    1. The value of `YOURLS_DB_PASS` inside `env.yourls` **SHOULD BE** exactly the same as `MYSQL_PASSWORD` in `env.mysql`.
+    2. The value of `YOURLS_DB_USER` inside `env.yourls` **SHOULD BE**  exactly the same as `MYSQL_USER` in `env.mysql.
+    3. All variables inside `env.mysql` and `env.yourls` **SHOULD NOT** contain `'=' (equal sign)`, `' ' (space)`, `'#' (number sign)`.
 
-## Known Issue
+### Why it will show `Could not auto-encrypt passwords.` when log into admin page?
 
-WebUI may show `Could not write file .htaccess in YOURLS root directory.`
-at first time deployment, it is actually a **false alarm**, please ignore it.
+    Check the FAQ for YOURLS for more details
+    - https://yourls.org/docs/guide/essentials/credentials#faq
 
-WebUI may show `Could not auto-encrypt passwords.` when log into admin page,
-it is Docker specific limitation, see [YOURLS wiki](https://github.com/YOURLS/YOURLS/wiki/Username-Passwords) for more detail
+### Why it will show `Could not write file .htaccess in YOURLS root directory.`?
+
+    It should only happen at 1st time deployment, you may safely ignore it.
+
+### Any others?
+
+    Here are some useful links for you
+    - https://yourls.org/docs
+    - https://yourls.org/docs/category/troubleshooting
+    - https://github.com/orgs/YOURLS/discussions
