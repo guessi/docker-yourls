@@ -2,6 +2,8 @@ name: ci
 
 on:
   push:
+    branches:
+      - 'master'
     tags:
       - '*.*.*'
 
@@ -21,6 +23,12 @@ jobs:
             guessi/docker-yourls
           tags: |
             type=semver,pattern={{version}}
+
+            # set latest tag for default branch
+            type=raw,value=latest,enable={{is_default_branch}}
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -35,6 +43,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
+          platforms: linux/amd64,linux/arm64
           context: .
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
