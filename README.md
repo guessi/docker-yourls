@@ -21,14 +21,15 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 
 * [Yourls](http://yourls.org) - 1.9.2
 
-| Container image tag      | Mobile-Detect version  | PHP version | OS version | Remark                             |
-|:-------------------------|:-----------------------|:------------|:-----------|:-----------------------------------|
-| 1.9.2-6 (alias of 1.9.2) | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only |
-| 1.9.2-5                  | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only |
-| 1.9.2-4                  | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only |
-| 1.9.2-3                  | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated                         |
-| 1.9.2-2                  | 2.8.45                 | PHP 8.0     | Debian 10  | deprecated                         |
-| 1.9.2-1                  | 2.8.41                 | PHP 8.0     | Debian 10  | deprecated                         |
+| Container image tag      | Mobile-Detect version  | PHP version | OS version | Remark                                      |
+|:-------------------------|:-----------------------|:------------|:-----------|:--------------------------------------------|
+| 1.9.2-7 (alias of 1.9.2) | 3.74.3                 | PHP 8.3     | Debian 12  | Multi-platform support, linux/{amd64,arm64} |
+| 1.9.2-6                  | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only          |
+| 1.9.2-5                  | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only          |
+| 1.9.2-4                  | 3.74.3                 | PHP 8.3     | Debian 12  | no code change, regular build only          |
+| 1.9.2-3                  | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated                                  |
+| 1.9.2-2                  | 2.8.45                 | PHP 8.0     | Debian 10  | deprecated                                  |
+| 1.9.2-1                  | 2.8.41                 | PHP 8.0     | Debian 10  | deprecated                                  |
 
 ## Integrated Plugins
 
