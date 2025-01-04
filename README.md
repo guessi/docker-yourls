@@ -40,7 +40,6 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 * [force-lowercase](https://github.com/YOURLS/force-lowercase)
 * [mobile-detect](https://github.com/guessi/yourls-mobile-detect)
 * [dont-log-bots](https://github.com/YOURLS/dont-log-bots)
-* [dont-log-crawler](https://github.com/luixxiul/dont-log-crawlers)
 * [dont-log-health-checker](https://github.com/guessi/yourls-dont-log-health-checker)
 
 
