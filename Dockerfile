@@ -13,7 +13,7 @@
 # Container image source:
 # - https://hub.docker.com/_/php/tags?page=1&name=8.3-apache-bookworm
 
-FROM php:8.3-apache-bookworm as yourls
+FROM php:8.3-apache-bookworm AS yourls
 
 RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
@@ -70,7 +70,7 @@ RUN rm -rf user/config-sample.php                                             \
            user/plugins/sample*                                            && \
     (find . -type d -name ".git" -exec rm -rf {} +)
 
-FROM yourls as noadmin
+FROM yourls AS noadmin
 
 # security enhancement: leave only production required items
 # ** note that it will still available somewhere in docker image layers
@@ -84,7 +84,7 @@ RUN rm -rf .git pages admin js css images sample* *.md                        \
     (find . -type f -name "*.json" -o -name "*.md" -o -name "*.css" | xargs rm -f) && \
     (find . -type f -exec file {} + | awk -F: '{if ($2 ~/image/) print $1}' | xargs rm -f)
 
-FROM yourls as theme
+FROM yourls AS theme
 
 # please be awared that "Flynntes/Sleeky" here have no update for years
 # you should take your own risk if you choose to have theme included
