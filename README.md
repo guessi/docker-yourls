@@ -23,7 +23,8 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 
 | Container image tag      | Mobile-Detect version  | PHP version | OS version | Remark                                      |
 |:-------------------------|:-----------------------|:------------|:-----------|:--------------------------------------------|
-| 1.9.2-8 (alias of 1.9.2) | 3.74.3                 | PHP 8.3     | Debian 12  | `dont-log-crawlers` removed                 |
+| 1.9.2-9 (alias of 1.9.2) | 3.74.3                 | PHP 8.3     | Debian 12  | No code change, regular re-build
+| 1.9.2-8                  | 3.74.3                 | PHP 8.3     | Debian 12  | `dont-log-crawlers` removed                 |
 | 1.9.2-7                  | 3.74.3                 | PHP 8.3     | Debian 12  | Multi-platform support, linux/{amd64,arm64} |
 | 1.9.2-6                  | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated, no code change, regular build   |
 | 1.9.2-5                  | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated, no code change, regular build   |
