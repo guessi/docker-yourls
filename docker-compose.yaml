@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   mysql:
-    image: mysql:8.4
+    image: public.ecr.aws/docker/library/mysql:8.4
     env_file:
       - env.mysql
     volumes:

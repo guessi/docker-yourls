@@ -12,9 +12,9 @@
 # - https://php.watch/versions
 #
 # Container image source:
-# - https://hub.docker.com/_/php/tags?page=1&name=8.5-apache-trixie
+# - https://gallery.ecr.aws/docker/library/php (mirror of https://hub.docker.com/_/php)
 
-FROM php:8.5-apache-trixie AS yourls
+FROM public.ecr.aws/docker/library/php:8.5-apache-trixie AS yourls
 
 RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
