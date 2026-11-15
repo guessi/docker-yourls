@@ -45,6 +45,9 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 > [!IMPORTANT]
 > You should always change the default username/password pairs for both MySQL and YOURLS.
 
+> [!WARNING]
+> `docker-compose.yaml` uses `mysql:8.4` since 1.10.6. An existing `mysql-data` volume created by `mysql:5.7` can not be reused directly. Run `backup.sh` with the old stack first, then follow [Restore backup from backup file](#restore-backup-from-backup-file) on the new one.
+
 To run YOURLS service with customized config
 
     $ vim env.mysql
