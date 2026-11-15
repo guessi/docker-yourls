@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BACKUP_FILE="mysql-dump-$(date +%Y-%m-%d-%H%m%S).sql"
+BACKUP_FILE="mysql-dump-$(date +%Y-%m-%d-%H%M%S).sql"
 
 docker info >/dev/null
 
