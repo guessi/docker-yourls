@@ -23,7 +23,7 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 
 | Container image tag        | Mobile-Detect version  | PHP version | OS version | Remark                                      |
 |:---------------------------|:-----------------------|:------------|:-----------|:--------------------------------------------|
-| 1.10.6-0 (alias of 1.10.6) | 3.74.3                 | PHP 8.5     | Debian 13  | Build with PHP 8.5, Debian 13               |
+| 1.10.6-0 (alias of 1.10.6) | 4.11.0                 | PHP 8.5     | Debian 13  | Build with PHP 8.5, Debian 13               |
 | 1.9.2-11 (alias of 1.9.2)  | 3.74.3                 | PHP 8.3     | Debian 12  | Final 1.9.2 build, `php.ini-production`     |
 | 1.9.2-10                   | 3.74.3                 | PHP 8.3     | Debian 12  | No code change, regular re-build            |
 
