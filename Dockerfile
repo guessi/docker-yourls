@@ -19,7 +19,8 @@ RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
         /etc/apache2/conf-available/security.conf
 
-RUN echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"                 && \
+    echo "expose_php=Off" > /usr/local/etc/php/conf.d/php-hide-version.ini
 
 RUN apt update                                                             && \
     apt install -y --no-install-recommends libonig-dev                     && \
