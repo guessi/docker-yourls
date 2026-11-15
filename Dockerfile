@@ -6,14 +6,15 @@
 # | 8.2    | Dec  8, 2022     | Dec 31, 2024         | Dec 31, 2026           |
 # | 8.3    | Nov 23, 2023     | Dec 31, 2025         | Dec 31, 2027           |
 # | 8.4    | Nov 21, 2024     | Dec 31, 2026         | Dec 31, 2028           |
+# | 8.5    | Nov 20, 2025     | Dec 31, 2027         | Dec 31, 2029           |
 # +--------+ -----------------+----------------------+------------------------+
 # - https://www.php.net/supported-versions.php
 # - https://php.watch/versions
 #
 # Container image source:
-# - https://hub.docker.com/_/php/tags?page=1&name=8.3-apache-bookworm
+# - https://hub.docker.com/_/php/tags?page=1&name=8.5-apache-trixie
 
-FROM php:8.3-apache-bookworm AS yourls
+FROM php:8.5-apache-trixie AS yourls
 
 RUN sed -i -e '/^ServerTokens/s/^.*$/ServerTokens Prod/g'                     \
            -e '/^ServerSignature/s/^.*$/ServerSignature Off/g'                \
@@ -29,9 +30,9 @@ RUN apt update                                                             && \
 RUN docker-php-ext-install pdo_mysql mysqli mbstring                       && \
     a2enmod rewrite ssl
 
-ENV YOURLS_VERSION 1.9.2
+ENV YOURLS_VERSION 1.10.6
 ENV YOURLS_PACKAGE https://github.com/YOURLS/YOURLS/archive/${YOURLS_VERSION}.tar.gz
-ENV YOURLS_CHECKSUM 62a95ba766d62f3305d75944cbfe12d5a90c08c88fbf2f6e67150d36412b916f
+ENV YOURLS_CHECKSUM 95549b8463c67a88eaa93f5dd8079599bc895f5ca047001ce385d1afdda26563
 
 RUN mkdir -p /opt/yourls                                                   && \
     curl -sSL ${YOURLS_PACKAGE} -o /tmp/yourls.tar.gz                      && \
@@ -94,9 +95,9 @@ FROM yourls AS theme
 
 WORKDIR /opt/yourls
 
-# sample configuration to integrate theme Sleeky-v2.5.0
+# sample configuration to integrate theme Sleeky-v2.6.0
 # - ref: https://github.com/Flynntes/Sleeky#quick-start
-ADD https://github.com/Flynntes/Sleeky/archive/refs/tags/v2.5.0.tar.gz        \
+ADD https://github.com/Flynntes/Sleeky/archive/refs/tags/v2.6.0.tar.gz        \
       /opt/theme-sleeky.tar.gz
 
 RUN mkdir -p /tmp/sleeky-extracted                                         && \
@@ -112,4 +113,4 @@ RUN mkdir -p /tmp/sleeky-extracted                                         && \
 # Uncomment the line below to include your own "config.php" setup
 # ADD path-to-your-config/config.php /opt/yourls/user/config.php
 #
-# ref: https://github.com/YOURLS/YOURLS/blob/1.9.2/user/config-sample.php
+# ref: https://github.com/YOURLS/YOURLS/blob/1.10.6/user/config-sample.php

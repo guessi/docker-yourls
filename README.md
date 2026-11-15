@@ -19,21 +19,13 @@ As time goes by, please take this project as a quick start guide for YOURLS and 
 
 ## Integrated Items
 
-* [Yourls](http://yourls.org) - 1.9.2
+* [Yourls](http://yourls.org) - 1.10.6
 
-| Container image tag       | Mobile-Detect version  | PHP version | OS version | Remark                                      |
-|:--------------------------|:-----------------------|:------------|:-----------|:--------------------------------------------|
-| 1.9.2-11 (alias of 1.9.2) | 3.74.3                 | PHP 8.3     | Debian 12  | Final 1.9.2 build, `php.ini-production`     |
-| 1.9.2-10                  | 3.74.3                 | PHP 8.3     | Debian 12  | No code change, regular re-build            |
-| 1.9.2-9                   | 3.74.3                 | PHP 8.3     | Debian 12  | No code change, regular re-build            |
-| 1.9.2-8                   | 3.74.3                 | PHP 8.3     | Debian 12  | `dont-log-crawlers` removed                 |
-| 1.9.2-7                   | 3.74.3                 | PHP 8.3     | Debian 12  | Multi-platform support, linux/{amd64,arm64} |
-| 1.9.2-6                   | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated, no code change, regular build   |
-| 1.9.2-5                   | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated, no code change, regular build   |
-| 1.9.2-4                   | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated, no code change, regular build   |
-| 1.9.2-3                   | 3.74.3                 | PHP 8.3     | Debian 12  | deprecated                                  |
-| 1.9.2-2                   | 2.8.45                 | PHP 8.0     | Debian 10  | deprecated                                  |
-| 1.9.2-1                   | 2.8.41                 | PHP 8.0     | Debian 10  | deprecated                                  |
+| Container image tag        | Mobile-Detect version  | PHP version | OS version | Remark                                      |
+|:---------------------------|:-----------------------|:------------|:-----------|:--------------------------------------------|
+| 1.10.6-0 (alias of 1.10.6) | 3.74.3                 | PHP 8.5     | Debian 13  | Build with PHP 8.5, Debian 13               |
+| 1.9.2-11 (alias of 1.9.2)  | 3.74.3                 | PHP 8.3     | Debian 12  | Final 1.9.2 build, `php.ini-production`     |
+| 1.9.2-10                   | 3.74.3                 | PHP 8.3     | Debian 12  | No code change, regular re-build            |
 
 ## Integrated Plugins
 
