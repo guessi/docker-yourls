@@ -10,6 +10,19 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: yourls
+            suffix: ''
+            latest: true
+          - target: theme
+            suffix: '-theme'
+            latest: false
+          - target: noadmin
+            suffix: '-noadmin'
+            latest: false
     steps:
       -
         name: Checkout
@@ -22,10 +35,10 @@ jobs:
           images: |
             guessi/docker-yourls
           tags: |
-            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},suffix=${{ matrix.suffix }}
 
-            # set latest tag for default branch
-            type=raw,value=latest,enable={{is_default_branch}}
+            # set latest tag for default branch (default target only)
+            type=raw,value=latest,enable=${{ matrix.latest && github.ref == 'refs/heads/main' }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v4
@@ -45,6 +58,7 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           context: .
+          target: ${{ matrix.target }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
