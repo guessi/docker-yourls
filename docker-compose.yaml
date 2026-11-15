@@ -25,11 +25,11 @@ services:
     # build: ./Dockerfile
     #
     # or even more integrated with theme Sleeky
-    # image: guessi/docker-yourls:1.9.2-theme
+    # image: guessi/docker-yourls:1.10.6-theme
     #
     # or with "x.y.z-noadmin" for production environment
-    # image: guessi/docker-yourls:1.9.2-noadmin
-    image: guessi/docker-yourls:1.9.2
+    # image: guessi/docker-yourls:1.10.6-noadmin
+    image: guessi/docker-yourls:1.10.6
     links:
       - mysql:mysql
     env_file:

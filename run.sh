@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IMAGE_VERSION=1.9.2
+IMAGE_VERSION=1.10.6
 
 CONTAINER_CMD="finch"
 CONTAINER_REPO="guessi/docker-yourls"
